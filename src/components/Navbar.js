@@ -15,7 +15,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-content">
         <Link to="/" className="navbar-brand">
-          AI Конспектер
+          NoteAI
         </Link>
         
         {user ? (
