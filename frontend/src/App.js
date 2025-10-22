@@ -1,3 +1,4 @@
+// App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -7,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import Summarizer from './components/Summarizer';
 import History from './components/History';
 import Profile from './components/Profile';
+import Calculator from './components/Calculator'; // Добавляем импорт калькулятора
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -54,6 +56,15 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Profile />
+                  </ProtectedRoute>
+                } 
+              />
+              {/* Добавляем маршрут для калькулятора */}
+              <Route 
+                path="/calculator" 
+                element={
+                  <ProtectedRoute>
+                    <Calculator />
                   </ProtectedRoute>
                 } 
               />

@@ -1,3 +1,4 @@
+// components/Navbar.js
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
@@ -11,14 +12,13 @@ const Navbar = () => {
     navigate('/login');
   };
 
-  // Определяем, что показывать в приветствии
   const getDisplayName = () => {
     if (userProfile?.firstName) {
       return userProfile.firstName;
     } else if (userProfile?.fullName) {
       return userProfile.fullName;
     }
-    return user?.email; // fallback на email если имени нет
+    return user?.email;
   };
 
   return (
@@ -33,6 +33,7 @@ const Navbar = () => {
             <ul className="navbar-nav">
               <li><Link to="/dashboard">Главная</Link></li>
               <li><Link to="/summarize">Создать конспект</Link></li>
+              <li><Link to="/calculator">Калькулятор</Link></li> {/* Добавляем ссылку на калькулятор */}
               <li><Link to="/history">История</Link></li>
               <li><Link to="/profile">Профиль</Link></li>
             </ul>
