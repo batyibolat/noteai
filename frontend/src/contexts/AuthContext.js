@@ -9,7 +9,20 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Функция для загрузки профиля пользователя
+  const fetchUserProfile = async () => {
+    try {
+      const response = await axios.get('http://localhost:8081/api/profile');
+      setUserProfile(response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Ошибка при загрузке профиля:', error);
+      return null;
+    }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -18,6 +31,9 @@ export const AuthProvider = ({ children }) => {
     if (token && userEmail) {
       setUser({ email: userEmail, token });
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      
+      // Загружаем профиль пользователя после установки токена
+      fetchUserProfile();
     }
     
     setLoading(false);
@@ -38,9 +54,11 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser({ email, token });
       
-      return { success: true };
+      // Загружаем профиль после успешного входа
+      const profile = await fetchUserProfile();
+      
+      return { success: true, profile };
     } catch (error) {
-      console.error('Login error:', error);
       return { 
         success: false, 
         error: error.response?.data || 'Login failed' 
@@ -58,7 +76,6 @@ export const AuthProvider = ({ children }) => {
 
       return { success: true };
     } catch (error) {
-      console.error('Registration error:', error);
       return { 
         success: false, 
         error: error.response?.data || 'Registration failed' 
@@ -71,14 +88,23 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('userEmail');
     delete axios.defaults.headers.common['Authorization'];
     setUser(null);
+    setUserProfile(null); // Сбрасываем профиль при выходе
+  };
+
+  // Функция для обновления профиля (можно вызывать после редактирования профиля)
+  const updateUserProfile = (profileData) => {
+    setUserProfile(profileData);
   };
 
   const value = {
     user,
+    userProfile,
     login,
     register,
     logout,
-    loading
+    loading,
+    fetchUserProfile,
+    updateUserProfile
   };
 
   return (

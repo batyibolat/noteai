@@ -15,8 +15,14 @@ public class JwtUtil {
     private String secret;
 
     private SecretKey getSigningKey() {
-        byte[] keyBytes = secret.getBytes();
-        return Keys.hmacShaKeyFor(keyBytes);
+        // Убедимся, что ключ имеет правильную длину
+        String secretKey = secret;
+        if (secretKey.length() < 32) {
+            secretKey = String.format("%-32s", secretKey).replace(' ', 'X');
+        } else if (secretKey.length() > 32) {
+            secretKey = secretKey.substring(0, 32);
+        }
+        return Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
     public String generateToken(String email) {

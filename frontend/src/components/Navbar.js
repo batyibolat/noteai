@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { user, userProfile, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -11,11 +11,21 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  // Определяем, что показывать в приветствии
+  const getDisplayName = () => {
+    if (userProfile?.firstName) {
+      return userProfile.firstName;
+    } else if (userProfile?.fullName) {
+      return userProfile.fullName;
+    }
+    return user?.email; // fallback на email если имени нет
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-content">
         <Link to="/" className="navbar-brand">
-          NoteAI
+          AI Конспектер
         </Link>
         
         {user ? (
@@ -24,9 +34,10 @@ const Navbar = () => {
               <li><Link to="/dashboard">Главная</Link></li>
               <li><Link to="/summarize">Создать конспект</Link></li>
               <li><Link to="/history">История</Link></li>
+              <li><Link to="/profile">Профиль</Link></li>
             </ul>
             <div className="navbar-user">
-              <span>Привет, {user.email}</span>
+              <span>Привет, {getDisplayName()}</span>
               <button onClick={handleLogout} className="logout-btn">
                 Выйти
               </button>

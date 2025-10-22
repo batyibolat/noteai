@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Summarizer from './components/Summarizer';
 import History from './components/History';
+import Profile from './components/Profile';
 import Navbar from './components/Navbar';
 import './App.css';
 
@@ -45,6 +46,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <History />
+                  </ProtectedRoute>
+                } 
+              />
+              <Route 
+                path="/profile" 
+                element={
+                  <ProtectedRoute>
+                    <Profile />
                   </ProtectedRoute>
                 } 
               />
