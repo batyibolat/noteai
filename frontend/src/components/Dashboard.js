@@ -159,39 +159,7 @@ const Dashboard = () => {
         </Link>
       </div>
       
-      {/* Недавние конспекты */}
-      {recentSummaries.length > 0 && (
-        <div className="recent-summaries">
-          <h2>Недавние конспекты</h2>
-          <div className="recent-grid">
-            {recentSummaries.map((summary) => (
-              <div key={summary.id} className="recent-card">
-                <div className="recent-header">
-                  <h4>{summary.title || `Конспект #${summary.id}`}</h4>
-                  {summary.isFavorite && <span className="favorite-badge">⭐</span>}
-                </div>
-                <p className="recent-preview">
-                  {summary.summaryText && summary.summaryText.length > 100 
-                    ? `${summary.summaryText.substring(0, 100)}...`
-                    : summary.summaryText
-                  }
-                </p>
-                <div className="recent-meta">
-                  <span>📅 {new Date(summary.createdAt).toLocaleDateString('ru-RU')}</span>
-                  {summary.compressionRatio && (
-                    <span>🎯 {Math.round((1 - summary.compressionRatio) * 100)}% сжатия</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="recent-actions">
-            <Link to="/history" className="btn btn-secondary">
-              Вся история
-            </Link>
-          </div>
-        </div>
-      )}
+
 
       {!error && recentSummaries.length === 0 && stats.totalSummaries === 0 && (
         <div className="empty-dashboard">
