@@ -34,7 +34,7 @@ const Navbar = () => {
             <ul className="navbar-nav">
               <li><Link to="/dashboard">Главная</Link></li>
               <li><Link to="/summarize">Создать конспект</Link></li>
-              <li><Link to="/calculator">Калькулятор</Link></li>
+              <li><Link to="/calculator">О нас</Link></li>
               <li><Link to="/history">История</Link></li>
               <li><Link to="/profile">Профиль</Link></li>
             </ul>

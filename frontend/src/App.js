@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
 import Login from './components/Login';
+import Footer from './components/Footer';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Summarizer from './components/Summarizer';
@@ -19,6 +20,7 @@ function ProtectedRoute({ children }) {
   return user ? children : <Navigate to="/login" />;
 }
 
+// В файле App.js, обновите компонент AppContent
 function AppContent() {
   const { isDark } = useTheme();
 
@@ -74,6 +76,7 @@ function AppContent() {
           <Route path="/" element={<Navigate to="/dashboard" />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

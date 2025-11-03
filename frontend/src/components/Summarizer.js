@@ -129,10 +129,6 @@ const Summarizer = () => {
     <div className="summarizer">
       <h1>Создание AI-конспекта</h1>
       
-      <div className="debug-info" style={{background: '#f8f9fa', padding: '1rem', borderRadius: '8px', marginBottom: '1rem', fontSize: '0.9rem'}}>
-        <strong>Отладка:</strong> Пользователь: {user?.email} | Токен: {user?.token ? 'есть' : 'нет'}
-      </div>
-
       {error && <div className="error">{error}</div>}
       {success && <div className="success">{success}</div>}
 
