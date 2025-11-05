@@ -2193,3 +2193,390 @@ input:focus, textarea:focus {
 .dark-theme .social-link:hover {
   background: var(--primary-gradient);
 }
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 12px;
+  }
+  
+  .navbar-nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .auth-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .file-upload {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .upload-btn, .download-btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .history-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .history-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .homepage-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .sidebar {
+    order: -1;
+  }
+  
+  .hero-banner {
+    padding: 2rem;
+  }
+  
+  .hero-banner h1 {
+    font-size: 2rem;
+  }
+  
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .about-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+  
+  .tech-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 8px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.1rem;
+
+  }
+  
+  .card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .auth-container {
+    margin: 0.5rem;
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .text-input {
+    min-height: 150px;
+    padding: 0.875rem;
+    border-radius: 12px;
+  }
+  
+  .summary-result {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .history-item {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .profile-card {
+    padding: 1.25rem;
+  }
+  
+  .profile-avatar img,
+  .avatar-placeholder {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .hero-banner {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .hero-banner h1 {
+    font-size: 1.75rem;
+  }
+  
+  .create-summary {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .about-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Мобильное меню */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: blue;
+  z-index: 2000;
+  padding: 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav.active {
+  transform: translateX(0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: var(--transition);
+  font-weight: 500;
+  display: block;
+}
+
+.mobile-nav-links a:hover {
+  background: var(--background-secondary);
+}
+
+.mobile-nav-user {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Поддержка безопасных зон (notch) */
+@supports(padding: max(0px)) {
+  .container,
+  .navbar-content,
+  .footer-content {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
+
+
+/* Мобильное меню */
+.mobile-menu-btn {
+  display: none !important;
+}
+
+
+
+.mobile-nav.active {
+  transform: translateX(0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: var(--transition);
+  font-weight: 500;
+  display: block;
+  font-size: 1.1rem;
+}
+
+.mobile-nav-links a:hover {
+  background: var(--background-secondary);
+}
+
+.mobile-nav-user {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-overlay {
+  display: none;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block !important;
+  }
+  
+  .navbar-nav {
+    display: none !important;
+  }
+  
+  .mobile-nav {
+    display: block;
+  }
+  
+  .mobile-nav-overlay {
+    display: block;
+  }
+  
+  .navbar-user {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-nav {
+    padding: 1.5rem;
+  }
+  
+  .mobile-nav-links a {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+}
